@@ -1,15 +1,12 @@
-puts 'Input your start year:'
-start_year = gets.chomp
-puts 'Input your end year:'
-end_year = gets.chomp
+puts 'This program will alphabetize your list of words.'
+puts 'Please enter as many words as you would like. When finished, press \'Enter\' on an empty row to start the program.'
 
-while start_year.to_i <= end_year.to_i
-  if start_year.to_i % 400 == 0
-    puts start_year
-  elsif start_year.to_i % 100 == 0
-  elsif start_year.to_i % 4 == 0
-    puts start_year
-  end
+array = []
+word = 'x'
 
-  start_year = start_year.to_i + 1
+while word != ''
+  word = gets.chomp
+  array.push word
 end
+
+puts array.sort
