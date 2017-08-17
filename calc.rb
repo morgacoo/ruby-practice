@@ -1,56 +1,15 @@
-say1 = ''
-say2 = ''
-say3 = ''
+puts 'Input your start year:'
+start_year = gets.chomp
+puts 'Input your end year:'
+end_year = gets.chomp
 
-while say1 != 'BYE' || say2 != 'BYE' || say3 != 'BYE'
-
-while say1 != 'BYE'
-
-  say1 = gets.chomp
-
-if say1 == say1.upcase
-  year = rand(1929..2000)
-  puts 'NO, NOT SINCE ' + year.to_s + '!'
-else
-  puts 'HUH?! SPEAK UP, SONNY!'
-end
-
-if say1 == 'BYE'
-  say2 = ''
-  say3 = ''
-end
-end
-
-while say2 != 'BYE'
-  say2 = gets.chomp
-
-  if say2 == say2.upcase
-    year = (rand(1929..2000))
-    puts 'NO, NOT SINCE ' + year.to_s + '!'
-  else
-    puts 'HUH?! SPEAK UP, SONNY!'
+while start_year.to_i <= end_year.to_i
+  if start_year.to_i % 400 == 0
+    puts start_year
+  elsif start_year.to_i % 100 == 0
+  elsif start_year.to_i % 4 == 0
+    puts start_year
   end
 
-  if say2 !='BYE'
-    say1 = ''
-    say3 = ''
-  end
-end
-
-while say3 != 'BYE'
-  say3 = gets.chomp
-
-  if say3 == say3.upcase
-    year = rand(1929..2000)
-    puts 'NO, NOT SINCE ' + year.to_s + '!'
-  else
-    puts 'HUH?! SPEAK UP, SONNY!'
-  end
-
-  if say3 != 'BYE'
-    say1 = ''
-    say2 = ''
-  end
-end
-
+  start_year = start_year.to_i + 1
 end
