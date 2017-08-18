@@ -1,27 +1,12 @@
-puts
-puts "Enter some words and I will returned them to you in alphabetical order!"
-puts
-input = gets.chomp
-input = input.split
+birthday = Time.mktime(1990, 8, 17, 9, 42)
+current_date = Time.new
+age_seconds = current_date - birthday
 
+billions = 1000000000 - age_seconds.to_i #how many seconds left until you hit 1 billion
 
-def swap(array)
-  i =0
-  while i < array.length #here is one iteration over the array
+time_left_years = (billions.to_f/60/60/24/365)
+time_left_hours = (billions.to_f/60/60/24)
 
-    i2 = i + 1
-    while i2 < array.length #here is a second. this allows me to compare the second index (and the rest as i2 increments) to the current one
-      if array[i] < array[i2]  #if the second is larger than the first
-        array[i]  , array[i2] = array[i2], array[i] #switch them. this is called parallel assignment
-      end # if
-      i2 += 1  #increment the second loop before the first. it will keep incrementing until the end before the first one does. then the whole thing starts again until the first loop has reached the full length of the array
-    end # inner loop
-    i += 1
- end # outer loop
-  puts
-  puts '...And just like magic ...here is your string in alphabetical order!! :'
-  puts
-  return array.reverse.join(' ')
-end # def
-
-puts swap(input)
+puts 'You are ' + age_seconds.to_i.to_s + ' seconds old!'
+puts 'You will be 1 billion seconds old in ' + time_left_years.to_s + ' years!'
+puts 'Or if you prefer days, you will be 1 billion seconds old in ' + time_left_hours.to_s + ' days!'
