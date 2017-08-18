@@ -1,54 +1,115 @@
-#****Program to give you a "Spank" for every year you are old!
+class Dragon
 
-puts 'What year were you born?'
-year = gets.chomp
-puts 'What month were you born?'
-month = gets.chomp
-puts 'What day were you born?'
-day = gets.chomp
+  def initialize name
+    @name = name
+    @asleep = false
+    @stuff_in_belly     = 10  # He's full
+    @stuff_in_intestine =  0  # He doesn't need to go to bathroom
 
-if month.downcase == 'january'
-  month = 1
-elsif month.downcase == 'february'
-  month = 2
-elsif month.downcase == 'march'
-  month = 3
-elsif month.downcase == 'april'
-  month = 4
-elsif month.downcase == 'may'
-  month = 5
-elsif month.downcase == 'june'
-  month = 6
-elsif month.downcase == 'july'
-  month = 7
-elsif month.downcase == 'august'
-  month = 8
-elsif month.downcase == 'september'
-  month = 9
-elsif month.downcase == 'october'
-  month = 10
-elsif month.downcase == 'november'
-  month = 11
-elsif month.downcase == 'december'
-  month = 12
-end
+    puts @name + ' is born.'
+  end
 
-birthday = Time.mktime(year, month, day)
+  def feed
+    puts 'You feed ' + @name + '.'
+    @stuff_in_belly = 10
+    passage_of_time
+  end
 
-current_time = Time.new
-age_seconds = current_time.to_i - birthday.to_i
+  def walk
+    puts 'You walk ' + @name + '.'
+    @stuff_in_intestine = 0
+    passage_of_time
+  end
 
-age_years = age_seconds.to_i/60/60/24/365
+  def put_to_bed
+    puts 'You put ' + @name + ' to bed.'
+    @asleep = true
+    3.times do
+      if @asleep
+        passage_of_time
+      end
+      if @asleep
+        puts @name + ' snores, filling the room with smoke.'
+      end
+    end
+    if @asleep
+      @asleep = false
+      puts @name + ' wakes up slowly.'
+    end
+  end
 
-puts
-puts 'You\'re ' + age_years.to_s + ' eh...'
-puts
-i = 0
-while i <= age_years
-  puts "SPANK!"
-  i += 1
-end
+  def toss
+    puts 'You toss ' + @name + ' up into the air.'
+    puts 'He giggles, which singes your eyebrows.'
+    passage_of_time
+  end
+
+  def rock
+    puts 'You rock ' + @name + ' gently.'
+    @asleep = true
+    puts 'He briefly dozes off...'
+    passage_of_time
+    if @asleep
+      @asleep = false
+      puts '...but wakes when you stop.'
+    end
+  end
+
+  private  #methods are defined by internal to object. You can feed dragon, but not ask if hungry.
+
+  def hungry?
+    @stuff_in_belly <= 2
+  end
+
+  def poopy?
+    @stuff_in_intestine >= 8
+  end
+
+  def passage_of_time
+    if @stuff_in_belly > 0
+      @stuff_in_belly = @stuff_in_belly - 1
+      @stuff_in_intestine = @stuff_in_intestine + 1
+    else #out dragon is starving!
+      if @asleep
+        @asleep = false
+        puts 'He wakes up suddenly!'
+      end
+      puts @name + ' is starving! In desperation, he ate YOU!'
+      exit #Quits program
+    end
+
+      if @stuff_in_intestine >= 10
+        @stuff_in_intestine = 0
+        puts 'Whoops ' + @name + ' had an accident...'
+      end
+
+      if hungry?
+        if @asleep
+          @asleep = false
+          puts 'He wakes up suddenly!'
+        end
+        puts @name + '\'s stomach grumbles...'
+      end
+
+      if poopy?
+        if @asleep
+          @asleep = false
+          puts 'He wakes up suddenly!'
+        end
+        puts @name + ' does the potty dance...'
+      end
+    end
+
+  end
 
 
-puts
-puts 'Wait til next year!'
+pet = Dragon.new 'Norbert'
+pet.feed
+pet.toss
+pet.walk
+pet.put_to_bed
+pet.rock
+pet.put_to_bed
+pet.put_to_bed
+pet.put_to_bed
+pet.put_to_bed
