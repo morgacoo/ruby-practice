@@ -9,7 +9,6 @@ day = gets.chomp
 
 if month.downcase == 'january'
   month = 1
-  puts 'Jan!'
 elsif month.downcase == 'february'
   month = 2
 elsif month.downcase == 'march'
@@ -31,6 +30,7 @@ elsif month.downcase == 'october'
 elsif month.downcase == 'november'
   month = 11
 elsif month.downcase == 'december'
+  month = 12
 end
 
 birthday = Time.mktime(year, month, day)
@@ -48,6 +48,7 @@ while i <= age_years
   puts "SPANK!"
   i += 1
 end
+
 
 puts
 puts 'Wait til next year!'
