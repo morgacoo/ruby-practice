@@ -29,20 +29,23 @@ class Orange_tree
       @height = @height + 2 #adds 2 feet to height each year
       @years_old = @years_old + 1
       @grows_fruit = true
-      @orange_count = @orange_count + 2 #grows two a year
-      puts 'Your tree grew 3 feet this year and grew 2 oranges! You now have ' + @orange_count.to_s + ' oranges.'
+      grows_fruit
+      #@orange_count = @orange_count + 2 #grows two a year
+      puts 'Your tree grew 3 feet this year and grew 2 oranges! You now have ' + @orange_count.to_s + ' oranges. You better pick them or they will fall off!'
       puts 'Your tree is ' + @height.to_s + ' feet tall!'
     elsif (@years_old > 6 && @years_old < 9)
       @years_old = @years_old + 1
       @grows_fruit = true
-      @orange_count = @orange_count + 4 #grows 4 a year
+      #@orange_count = @orange_count + 4 #grows 4 a year
       @height = @height + 2
-      puts 'You tree grew 2 feet this year and 4 oranges! You now have ' + @orange_count.to_s + ' oranges and your tree is ' + @years_old.to_s + ' years old!'
+      puts 'You tree grew 2 feet this year and 4 oranges! You now have ' + @orange_count.to_s + ' oranges and your tree is ' + @years_old.to_s + ' years old! You better pick the oranges or they will fall off!'
       puts 'Your tree is ' + @height.to_s + ' feet tall!'
+      grows_fruit
     else @years_old >= 9
       tree_dies
       exit #Quits program
     end
+    loses_fruit
   end
 
   def grows_fruit
@@ -77,6 +80,10 @@ class Orange_tree
     else
       puts 'Sorry buddy, but there aren\'t any oranges left this year.'
     end
+  end
+
+  def loses_fruit
+    @orange_count = 0
   end
 
 end
