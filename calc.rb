@@ -1,3 +1,4 @@
+
 class Dragon
 
   def initialize name
@@ -9,18 +10,21 @@ class Dragon
     puts @name + ' is born.'
   end
 
+# Feed
   def feed
     puts 'You feed ' + @name + '.'
     @stuff_in_belly = 10
     passage_of_time
   end
 
+# Walk
   def walk
     puts 'You walk ' + @name + '.'
     @stuff_in_intestine = 0
     passage_of_time
   end
 
+# Put to bed
   def put_to_bed
     puts 'You put ' + @name + ' to bed.'
     @asleep = true
@@ -38,12 +42,14 @@ class Dragon
     end
   end
 
+#Toss
   def toss
     puts 'You toss ' + @name + ' up into the air.'
     puts 'He giggles, which singes your eyebrows.'
     passage_of_time
   end
 
+# Rock
   def rock
     puts 'You rock ' + @name + ' gently.'
     @asleep = true
@@ -57,19 +63,22 @@ class Dragon
 
   private  #methods are defined by internal to object. You can feed dragon, but not ask if hungry.
 
+# hungry?
   def hungry?
     @stuff_in_belly <= 2
   end
 
+# poopy?
   def poopy?
     @stuff_in_intestine >= 8
   end
 
   def passage_of_time
     if @stuff_in_belly > 0
+      #move from belly to intestine
       @stuff_in_belly = @stuff_in_belly - 1
       @stuff_in_intestine = @stuff_in_intestine + 1
-    else #out dragon is starving!
+    else #our dragon is starving!
       if @asleep
         @asleep = false
         puts 'He wakes up suddenly!'
@@ -102,14 +111,27 @@ class Dragon
 
   end
 
-
 pet = Dragon.new 'Norbert'
-pet.feed
-pet.toss
-pet.walk
-pet.put_to_bed
-pet.rock
-pet.put_to_bed
-pet.put_to_bed
-pet.put_to_bed
-pet.put_to_bed
+
+command = ''
+
+while command != 'exit'
+puts 'Enter a command to control your dragon:'
+command = gets.chomp
+if command  == 'feed'
+  pet.feed
+elsif command == 'walk'
+  pet.walk
+elsif command == 'put to bed'
+  pet.put_to_bed
+elsif command == 'toss'
+  pet.toss
+elsif command == 'rock'
+  pet.rock
+elsif command == 'exit'
+  exit
+else
+  puts 'Can\'t recognize your command, please re-enter.'
+end
+
+end
